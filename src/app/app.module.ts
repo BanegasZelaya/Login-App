@@ -10,12 +10,14 @@ import { LoginPageComponent } from "./componentes/login-page/login-page.componen
 import { PrivadoPageComponent } from "./componentes/privado-page/privado-page.component";
 import { NotFoundPageComponent } from "./componentes/not-found-page/not-found-page.component";
 import { AuthService } from "./servicios/auth.service";
+
 import { FormsModule } from "@angular/forms";
 
 //cnx firebase
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { environment } from "../environments/environment";
+import { AuthGuard } from "./guards/auth.guard";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { environment } from "../environments/environment";
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
