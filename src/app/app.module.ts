@@ -11,6 +11,11 @@ import { PrivadoPageComponent } from "./componentes/privado-page/privado-page.co
 import { NotFoundPageComponent } from "./componentes/not-found-page/not-found-page.component";
 import { AuthService } from "./servicios/auth.service";
 
+import {
+  FlashMessagesModule,
+  FlashMessagesService
+} from "angular2-flash-messages";
+
 import { FormsModule } from "@angular/forms";
 
 //cnx firebase
@@ -34,9 +39,10 @@ import { AuthGuard } from "./guards/auth.guard";
     AppRoutingModule,
     FormsModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    FlashMessagesModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
