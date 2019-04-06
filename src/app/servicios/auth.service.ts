@@ -1,11 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "angularfire2/auth";
-
 import * as firebase from "firebase/app";
-import { reject } from "q";
-import { registerLocaleData } from "@angular/common";
-import { map, take, tap } from "rxjs/operators";
-import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"

@@ -16,13 +16,19 @@ import {
   FlashMessagesService
 } from "angular2-flash-messages";
 
-import { FormsModule } from "@angular/forms";
-
 //cnx firebase
-import { AngularFireModule } from "angularfire2";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { environment } from "../environments/environment";
 import { AuthGuard } from "./guards/auth.guard";
+import { AgregarNumerosComponent } from "./componentes/agregar-numeros/agregar-numeros.component";
+import { EmployeesComponent } from "./employees/employees.component";
+import { EmployeeComponent } from "./employees/employee/employee.component";
+import { EmployeeListComponent } from "./employees/employee-list/employee-list.component";
+import { EmployeeService } from "./shared/employee.service";
+
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -32,7 +38,11 @@ import { AuthGuard } from "./guards/auth.guard";
     RegisterPageComponent,
     LoginPageComponent,
     PrivadoPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    AgregarNumerosComponent,
+    EmployeesComponent,
+    EmployeeComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +50,10 @@ import { AuthGuard } from "./guards/auth.guard";
     FormsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    FlashMessagesModule
+    FlashMessagesModule,
+    AngularFirestoreModule
   ],
-  providers: [AuthService, AuthGuard, FlashMessagesService],
+  providers: [AuthService, AuthGuard, FlashMessagesService, EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

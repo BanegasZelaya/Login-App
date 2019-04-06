@@ -1,3 +1,14 @@
 .alert.flash-message {
     margin-top: 10px;
 }
+
+input.ng-touched.ng-invalid {
+    border-color: #dc3545;
+}
+
+div.validation-error {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545
+}

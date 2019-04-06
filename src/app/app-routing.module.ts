@@ -7,6 +7,8 @@ import { LoginPageComponent } from "./componentes/login-page/login-page.componen
 import { RegisterPageComponent } from "./componentes/register-page/register-page.component";
 import { PrivadoPageComponent } from "./componentes/privado-page/privado-page.component";
 import { NotFoundPageComponent } from "./componentes/not-found-page/not-found-page.component";
+import { AgregarNumerosComponent } from "./componentes/agregar-numeros/agregar-numeros.component";
+
 import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
@@ -18,6 +20,12 @@ const routes: Routes = [
     component: PrivadoPageComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: "agregarNumeros",
+    component: AgregarNumerosComponent,
+    canActivate: [AuthGuard]
+  },
+
   { path: "**", component: NotFoundPageComponent }
 ];
 
