@@ -11,6 +11,9 @@ import { PrivadoPageComponent } from "./componentes/privado-page/privado-page.co
 import { NotFoundPageComponent } from "./componentes/not-found-page/not-found-page.component";
 import { AuthService } from "./servicios/auth.service";
 
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
+
 import {
   FlashMessagesModule,
   FlashMessagesService
@@ -45,13 +48,15 @@ import { FormsModule } from "@angular/forms";
     EmployeeListComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FlashMessagesModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ToastrModule.forRoot()
   ],
   providers: [AuthService, AuthGuard, FlashMessagesService, EmployeeService],
   bootstrap: [AppComponent]

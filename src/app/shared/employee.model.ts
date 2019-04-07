@@ -6,5 +6,5 @@ export class Employee {
   cantidad: number;
   numeroR: number;
   cantidadR: number;
-  fecha: string;
+  fecha: number;
 }

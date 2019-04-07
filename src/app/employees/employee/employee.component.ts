@@ -4,7 +4,8 @@ import { AuthService } from "src/app/servicios/auth.service";
 import { NgForm } from "@angular/forms";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { formatDate } from "@angular/common";
-import { format } from "path";
+
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-employee",
@@ -16,13 +17,19 @@ export class EmployeeComponent implements OnInit {
   public emailUsuario: string;
 
   constructor(
+    private AuthService: AuthService,
     private service: EmployeeService,
     private firestore: AngularFirestore,
-    private AuthService: AuthService
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
     this.resetForm();
+
+    this.correoAgain();
+  }
+
+  correoAgain() {
     this.AuthService.getAuth().subscribe(auth => {
       if (auth) {
         this.emailUsuario = auth.email;
@@ -38,14 +45,21 @@ export class EmployeeComponent implements OnInit {
       cantidad: null,
       numeroR: null,
       cantidadR: null,
-      fecha: ""
+      fecha: null
     };
   }
 
   onSubmit(form: NgForm) {
     let data = form.value;
 
-    this.firestore.collection("employees").add(data);
-    this.resetForm(form);
+    this.firestore.collection(this.emailUsuario).add(data);
+    (this.service.formData.numero = null), focus();
+    this.service.formData.numeroR = null;
+    this.service.formData.cantidad = null;
+    this.service.formData.cantidadR = null;
+    this.service.formData.fecha = null;
+    this.hoy = Date.now();
+
+    this.toastr.success("Agregado correctamente", "Registro de ticket");
   }
 }

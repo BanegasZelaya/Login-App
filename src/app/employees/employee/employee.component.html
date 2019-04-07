@@ -2,7 +2,7 @@
 
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
     <div class="form-group">
-        <input name="numero" #numero="ngModel" [(ngModel)]="service.formData.numero" class="form-control" placeholder="Numero" required>
+        <input name="numero" #numero="ngModel" [(ngModel)]="service.formData.numero" class="form-control" placeholder="Numero" autofocus required>
         <div *ngIf="numero.invalid && numero.touched" class="validation-error">
             este campo es requerido.
         </div>
@@ -10,38 +10,55 @@
 
     <div class="form-group">
         <input name="cantidad" #cantidad="ngModel" [(ngModel)]="service.formData.cantidad" class="form-control" placeholder="Cantidad" required>
+        <div *ngIf="cantidad.invalid && cantidad.touched" class="validation-error">
+            este campo es requerido.
+        </div>
     </div>
 
-    <div class="form-group">
-        <input name="numeroR" #numeroR="ngModel" [(ngModel)]="service.formData.numeroR" class="form-control" placeholder="Numero regalado">
-    </div>
-
-    <div class="form-group">
-        <input name="cantidadR" #cantidadR="ngModel" [(ngModel)]="service.formData.cantidadR" class="form-control" placeholder="Cantidad regalado">
-    </div>
     <div class="form-group">
         <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">
         Enviar
       </button>
-
-
-        <br>
-        <br>
-        <br>
     </div>
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <div>
+        <h4>Regalado</h4>
+    </div>
+
+    <div class="row">
+
+        <div class="form-group col-md-6">
+            <input name="numeroR" #numeroR="ngModel" [(ngModel)]="service.formData.numeroR" class="form-control" placeholder="Numero regalado">
+        </div>
+
+        <div class="form-group col-md-6">
+            <input name="cantidadR" #cantidadR="ngModel" [(ngModel)]="service.formData.cantidadR" class="form-control" placeholder="Cantidad regalado">
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
 
     <div class="form-group" *ngIf="!isLogin">
         <input name="fecha" #fecha="ngModel" [(ngModel)]="hoy" class="form-control" placeholder="Fecha">
     </div>
     <div class="form-group" *ngIf="!isLogin">
-        <input name="correo" #fecha="ngModel" [(ngModel)]="emailUsuario" class="form-control" placeholder="correo">
+        <input name="correo" #correo="ngModel" [(ngModel)]="emailUsuario" class="form-control" placeholder="correo">
     </div>
 
-    <!-- <div class="form-group ">
+    <div class="form-group ">
         <label class="form-control" for="">{{hoy|date:'short'}}  {{hoy|date:'hhmm'}}   ---{{hoy | date}}</label>
 
     </div>
- -->
+
 
 
 
